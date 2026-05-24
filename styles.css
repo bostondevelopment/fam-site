@@ -1,0 +1,146 @@
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --muted: #6b6b6b;
+  --rule: #e5e5e5;
+  --link: #2456c6;
+  --bg: #fdfdfb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.hero {
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  color: var(--ink);
+}
+
+.lede {
+  color: var(--muted);
+  font-size: 19px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 40px 0 12px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 24px 0 8px;
+  color: var(--ink);
+}
+
+p,
+li {
+  color: var(--ink-soft);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ul.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.links li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+}
+ul.links li:last-child {
+  border-bottom: none;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.callout {
+  background: #f4efe3;
+  border-left: 3px solid #c9a961;
+  padding: 14px 18px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.callout p {
+  margin: 0;
+  color: var(--ink);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 15px;
+}
+th,
+td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+th {
+  font-weight: 600;
+  color: var(--ink);
+  background: #f7f6f2;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+footer {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 14px;
+}
+footer p {
+  margin: 4px 0;
+  color: var(--muted);
+}
