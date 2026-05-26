@@ -8,11 +8,21 @@
       name="description"
       content="Privacy Policy for the Fam app from Boston Development."
     />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <meta name="theme-color" content="#E37A6D" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="page">
-      <a class="back" href="index.html">&larr; Back</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-brand" href="index.html">Fam</a>
+        <div class="nav-links">
+          <a href="index.html">Product</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="privacy.html" class="active">Privacy</a>
+        </div>
+      </nav>
 
       <h1>Privacy Policy</h1>
       <p class="meta">Effective date: May 24, 2026 &middot; Last updated: May 24, 2026</p>
@@ -380,9 +390,13 @@
         </p>
       </section>
 
-      <footer>
-        <p>© Boston Development</p>
-        <p><a href="index.html">Home</a></p>
+      <footer class="site-footer">
+        <p>© Boston Development · A private place for your family.</p>
+        <div class="footer-links">
+          <a href="index.html">Product</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="mailto:bostondevelopmentco@gmail.com">bostondevelopmentco@gmail.com</a>
+        </div>
       </footer>
     </main>
   </body>

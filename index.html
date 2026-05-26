@@ -6,38 +6,189 @@
     <title>Fam — A private place for your family</title>
     <meta
       name="description"
-      content="Fam is a private app for families to keep their people, photos, and memories in one place."
+      content="Fam is a private app for families to keep their people, photos, and memories in one place. No ads. No selling of your data."
     />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    <meta name="theme-color" content="#E37A6D" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="page">
+    <main class="page wide">
+      <nav class="site-nav" aria-label="Primary">
+        <a class="nav-brand" href="index.html">Fam</a>
+        <div class="nav-links">
+          <a href="index.html" class="active">Product</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="privacy.html">Privacy</a>
+        </div>
+      </nav>
+
       <header class="hero">
         <h1>Fam</h1>
         <p class="lede">A private place for your family.</p>
+        <p style="max-width: 620px; margin-top: 18px;">
+          Fam helps families keep their <span class="accent-b">people</span>,
+          <span class="accent-o">photos</span>, and
+          <span class="accent-p">memories</span> together. Built carefully —
+          privately, with no ads, and no selling of your data.
+        </p>
+        <div class="cta-row">
+          <!-- TODO: replace href="#" with App Store URL -->
+          <a class="btn" href="#" aria-label="Get the app">Get the App →</a>
+          <a class="btn btn-secondary" href="engineering.html">How it's built →</a>
+        </div>
       </header>
 
+      <!-- Screenshot strip ------------------------------------------------ -->
       <section>
+        <div class="screenshot-strip">
+          <div class="screenshot">
+            <img src="assets/screens/01_tree.png" alt="The Fam family tree, showing Marge Simpson at the center of her extended family." />
+          </div>
+          <div class="screenshot">
+            <img src="assets/screens/02_pulse.png" alt="The Pulse feed: upcoming birthdays, new photos, and an RSVP request." />
+          </div>
+          <div class="screenshot">
+            <img src="assets/screens/03_photos.png" alt="The shared family album, organized by decade." />
+          </div>
+        </div>
+      </section>
+
+      <!-- What Fam is ---------------------------------------------------- -->
+      <section>
+        <h2>What Fam is</h2>
         <p>
-          Fam helps families keep their people, photos, and memories together. We are
-          building it carefully — privately, with no ads, and no selling of your data.
+          Fam is a private family graph. The people you love, the photos you've
+          taken of them, the birthdays and anniversaries and holidays that mark
+          a year together — all in one place, visible only to your family.
+        </p>
+        <p>
+          It's not a social network and it's not a chat app. There are no
+          followers, no public posts, no algorithm picking who sees what. Just
+          your family, your memories, and a quiet running feed of what's coming
+          up next.
         </p>
       </section>
 
-      <section>
-        <h2>Resources</h2>
-        <ul class="links">
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li>
-            <a href="mailto:bostondevelopmentco@gmail.com"
-              >bostondevelopmentco@gmail.com</a
-            >
-          </li>
-        </ul>
+      <!-- How to use it -------------------------------------------------- -->
+      <section class="feature-row">
+        <div class="feature-shot">
+          <img src="assets/screens/04_onboarding.png" alt="Tag your people: the face-tagging onboarding step." />
+        </div>
+        <div class="feature-copy">
+          <h2>How to use it</h2>
+          <p>Four steps from empty app to a family that's actually together.</p>
+          <ol>
+            <li><strong>Start a family.</strong> Name it. Invite the people you trust.</li>
+            <li><strong>Add your people.</strong> Parents, grandparents, kids,
+              in-laws, the aunt nobody talks about. Birthdays and anniversaries
+              go on the calendar automatically.</li>
+            <li><strong>Tag the photos.</strong> Drop in old albums. Fam suggests
+              who's in each face. You confirm or correct.</li>
+            <li><strong>Open the Pulse.</strong> Whose birthday is next, what just
+              got added, who needs a card in the mail.</li>
+          </ol>
+        </div>
       </section>
 
-      <footer>
-        <p>© Boston Development</p>
+      <!-- Past + future -------------------------------------------------- -->
+      <section>
+        <h2>The past and the future, in one place</h2>
+        <div class="arc arc-two">
+          <div class="arc-frame">
+            <div class="screenshot">
+              <img src="assets/screens/arc_03.png" alt="The family list view: a timeline of marriages and births stretching back generations." />
+            </div>
+            <p class="arc-title">A family with history</p>
+            <p class="arc-sub">The story already written. Marriages, births, milestones — gathered up so nothing gets lost.</p>
+          </div>
+          <div class="arc-frame">
+            <div class="screenshot">
+              <img src="assets/screens/06_living_summary.png" alt="The calendar view: upcoming birthdays for Bart, Abe, Lisa, Herb, and Maggie." />
+            </div>
+            <p class="arc-title">A family with a future</p>
+            <p class="arc-sub">What's coming next. Birthdays, anniversaries, plans — never a card sent late, never a date forgotten.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Habits that make it feel alive --------------------------------- -->
+      <section class="feature-row reverse">
+        <div class="feature-shot">
+          <img src="assets/screens/05_pulse_card.png" alt="A Pulse memory card opened in detail: 'Maggie's first words,' posted by Lisa." />
+        </div>
+        <div class="feature-copy">
+          <h2>The habits that make it feel alive</h2>
+          <p>
+            Fam quietly accumulates the more you give it. A few minutes a week
+            is plenty.
+          </p>
+          <ul>
+            <li>Add a birthday the day you think of it — never lose another one.</li>
+            <li>Tag a face or two when you scroll your camera roll. Old albums fill themselves in.</li>
+            <li>RSVP to family events instead of ghosting the group text.</li>
+            <li>Drop a memory on someone's profile when they cross your mind.</li>
+          </ul>
+          <p>
+            A month in, this is the screen you open when you want to feel close
+            to your family.
+          </p>
+        </div>
+      </section>
+
+      <!-- Pulse ---------------------------------------------------------- -->
+      <section>
+        <h2>The Pulse</h2>
+        <p>
+          The home of Fam is the <span class="accent-g">Pulse</span> — a quiet
+          running feed of what's happening in your family. Birthdays coming
+          up. Photos just added. Memories someone wrote down. RSVPs you owe.
+          Pulled together in one place, scoped to your family. No algorithm
+          picking what you see.
+        </p>
+        <div class="avatar-graph" aria-hidden="true">
+          <img src="assets/grandfather_paternal.png" alt="" />
+          <img src="assets/grandmother_paternal.png" alt="" />
+          <img src="assets/grandfather_maternal.png" alt="" />
+          <img src="assets/grandmother_maternal.png" alt="" />
+          <img src="assets/father.png" alt="" />
+          <img src="assets/mother.png" alt="" />
+          <img src="assets/aunt_patty.png" alt="" />
+          <img src="assets/uncle_herb.png" alt="" />
+          <img src="assets/aunt_selma.png" alt="" />
+          <img src="assets/son.png" alt="" />
+          <img src="assets/daughter.png" alt="" />
+          <img src="assets/baby.png" alt="" />
+        </div>
+      </section>
+
+      <!-- Closing CTA ---------------------------------------------------- -->
+      <section class="feature-row">
+        <div class="feature-shot">
+          <img src="assets/screens/07_hero.png" alt="The Pulse feed: a family that's actually together." />
+        </div>
+        <div class="feature-copy">
+          <h2>A private place for your family</h2>
+          <p>
+            No ads. No tracking across other apps. No selling your data. Just
+            your family.
+          </p>
+          <div class="cta-row">
+            <!-- TODO: replace href="#" with App Store URL -->
+            <a class="btn" href="#">Get the App →</a>
+            <a class="btn btn-secondary" href="engineering.html">See how it's built →</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p>© Boston Development · A private place for your family.</p>
+        <div class="footer-links">
+          <a href="engineering.html">Engineering</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="mailto:bostondevelopmentco@gmail.com">bostondevelopmentco@gmail.com</a>
+        </div>
       </footer>
     </main>
   </body>

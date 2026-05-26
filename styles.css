@@ -1,10 +1,20 @@
 :root {
-  --ink: #1a1a1a;
-  --ink-soft: #4a4a4a;
-  --muted: #6b6b6b;
-  --rule: #e5e5e5;
-  --link: #2456c6;
-  --bg: #fdfdfb;
+  /* On-brand palette pulled from Fam's design_specs_base.md.
+     Pure white + coral, no gray-warm cream. */
+  --ink:       #1C1C1E;   /* Fam color.textPrimary */
+  --ink-soft:  #3A3A3C;   /* slightly softer for body copy */
+  --muted:     #6E6E73;   /* Fam color.textSecondary */
+  --rule:      #E6E6E6;   /* Fam color.divider */
+  --bg:        #FFFFFF;   /* Fam color.bg / surface — pure white */
+
+  /* Brand accent */
+  --coral:       #E37A6D; /* Fam color.accent / primary */
+  --coral-deep:  #C9624D; /* hover / pressed shade */
+  --coral-tint:  #F4C5BE; /* Fam color.accentTint — for soft fills */
+  --coral-soft:  #FDF1EE; /* very light peach — card backgrounds */
+
+  /* Links default to the brand coral now (was blue) */
+  --link: var(--coral);
 }
 
 * {
@@ -97,11 +107,11 @@ ul.links li:last-child {
 }
 
 .callout {
-  background: #f4efe3;
-  border-left: 3px solid #c9a961;
+  background: var(--coral-soft);
+  border-left: 3px solid var(--coral);
   padding: 14px 18px;
   margin: 20px 0;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 .callout p {
   margin: 0;
@@ -122,9 +132,9 @@ td {
   vertical-align: top;
 }
 th {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
-  background: #f7f6f2;
+  background: var(--coral-soft);
 }
 
 .back {
@@ -143,4 +153,579 @@ footer {
 footer p {
   margin: 4px 0;
   color: var(--muted);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Marketing + Engineering page components (additive, do not modify above) */
+/* ---------------------------------------------------------------------- */
+
+:root {
+  /* Accent helpers for color-tinted emphasis words.
+     Primary accent aligns to the brand coral; the rest stay distinct
+     so the hero "people · photos · memories" trio reads as variety,
+     not as three coral words next to each other. */
+  --accent-r: var(--coral);   /* unified with brand */
+  --accent-y: #C9A961;        /* warm gold */
+  --accent-b: #5B7FBC;        /* softened blue */
+  --accent-o: #D97A3A;        /* warm orange */
+  --accent-g: #4A8A5C;        /* muted green */
+  --accent-p: #7A5BA8;        /* muted plum */
+  --panel: #FFFFFF;
+  --panel-warm: var(--coral-soft);  /* peach-tinted card bg, not gray-warm */
+  --shadow-card: 0 12px 28px rgba(28, 28, 30, 0.08);
+  --shadow-card-strong: 0 18px 40px rgba(28, 28, 30, 0.12);
+}
+
+/* Wide layout variant for marketing + engineering pages */
+.page.wide {
+  max-width: 960px;
+}
+
+/* Top nav --------------------------------------------------------------- */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0 28px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 40px;
+}
+.nav-brand {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.nav-brand:hover { text-decoration: none; }
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+.nav-links a {
+  color: var(--ink-soft);
+  font-size: 15px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-links a.active {
+  color: var(--coral);
+  font-weight: 700;
+  border-bottom-color: var(--coral);
+}
+
+/* Site footer ----------------------------------------------------------- */
+.site-footer {
+  margin-top: 96px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.site-footer p { margin: 0; color: var(--muted); }
+.site-footer .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.site-footer a { color: var(--ink-soft); }
+
+/* Kicker + page lede ---------------------------------------------------- */
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.page-lede {
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0 0 8px;
+}
+
+/* CTA row + buttons ----------------------------------------------------- */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 700;
+  background: var(--coral);
+  color: #FFFFFF;
+  border: 1px solid var(--coral);
+  box-shadow: 0 6px 18px rgba(227, 122, 109, 0.28);
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn:hover {
+  text-decoration: none;
+  background: var(--coral-deep);
+  border-color: var(--coral-deep);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(201, 98, 77, 0.34);
+}
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(201, 98, 77, 0.24);
+}
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  box-shadow: none;
+}
+.btn-secondary:hover {
+  background: var(--coral-soft);
+  color: var(--coral-deep);
+  border-color: var(--coral-deep);
+  box-shadow: none;
+}
+
+/* Screenshot containers — transparent layout-only.
+   The phone screenshots already have bezels + soft device shadow baked
+   into the image. Wrapping them in a white card with another drop shadow
+   would read as a gray rectangle around each phone — which is wrong for
+   the brand (pure white + coral, no extra chrome). */
+.screenshot,
+.feature-shot,
+.inline-shot {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.screenshot > .placeholder,
+.feature-shot > .placeholder,
+.inline-shot > .placeholder {
+  border-radius: 22px;
+}
+.screenshot img,
+.feature-shot img,
+.inline-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.screenshot-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0 8px;
+}
+@media (max-width: 720px) {
+  .screenshot-strip { grid-template-columns: 1fr; }
+}
+
+/* Aspect-ratio placeholder for screenshots ----------------------------- */
+.placeholder {
+  background: linear-gradient(135deg, var(--coral-soft) 0%, #FFFFFF 50%, var(--coral-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  padding: 16px;
+}
+.placeholder.ar-phone   { aspect-ratio: 9 / 19.5; }
+.placeholder.ar-wide    { aspect-ratio: 16 / 10; }
+.placeholder.ar-square  { aspect-ratio: 1 / 1; }
+.placeholder code {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  word-break: break-all;
+}
+
+/* Feature rows (alternating image / copy) ------------------------------ */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin: 64px 0;
+}
+.feature-row.reverse > .feature-shot { order: 2; }
+.feature-row .feature-copy h2 { margin-top: 0; }
+.feature-row .feature-copy ol,
+.feature-row .feature-copy ul {
+  padding-left: 18px;
+}
+.feature-row .feature-copy li {
+  margin: 8px 0;
+}
+@media (max-width: 760px) {
+  .feature-row { grid-template-columns: 1fr; gap: 28px; }
+  .feature-row.reverse > .feature-shot { order: 0; }
+}
+
+/* Product arc strip ----------------------------------------------------- */
+.arc {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 40px 0;
+}
+.arc-frame { display: flex; flex-direction: column; gap: 12px; }
+.arc-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 4px 0 0;
+}
+.arc-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+@media (max-width: 720px) {
+  .arc { grid-template-columns: 1fr; }
+}
+
+/* Two-frame arc variant (past / future) — wider frames than the 3-col */
+.arc.arc-two {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 640px) {
+  .arc.arc-two { grid-template-columns: 1fr; max-width: 380px; }
+}
+
+/* Decorative avatar graph (reuses existing relationship PNGs) --------- */
+.avatar-graph {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 0;
+}
+.avatar-graph img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--panel);
+}
+
+/* Stat grid (engineering page) ----------------------------------------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0 48px;
+}
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+.stat-num {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  display: block;
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+  display: block;
+  line-height: 1.45;
+}
+@media (max-width: 720px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Generic card (used for narrative blocks on engineering page) -------- */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 28px 30px;
+  margin: 24px 0;
+}
+.card > h2:first-child,
+.card > h3:first-child { margin-top: 0; }
+
+/* Tech stack groups + pills ------------------------------------------- */
+.stack-group {
+  margin: 18px 0;
+}
+.stack-group h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 10px;
+  font-weight: 600;
+}
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tech-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--panel-warm);
+  border: 1px solid var(--rule);
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pipeline stages (vertical numbered with connector) ------------------ */
+.pipeline {
+  margin: 16px 0 8px;
+  padding: 0;
+  list-style: none;
+  counter-reset: stage;
+}
+.pipeline-stage {
+  position: relative;
+  padding: 12px 0 20px 56px;
+  counter-increment: stage;
+}
+.pipeline-stage::before {
+  content: counter(stage);
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pipeline-stage::after {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 50px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--rule);
+}
+.pipeline-stage:last-child::after { display: none; }
+.pipeline-stage h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+.pipeline-stage p { margin: 0; font-size: 15px; }
+
+/* Inline file paths ---------------------------------------------------- */
+code.path,
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--panel-warm);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1px 6px;
+  color: var(--ink);
+  /* Long file paths shouldn't push the viewport on narrow screens */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Accent helpers — formerly color-tinted ("rainbow") emphasis words.
+   The Fam brand is white + coral, not multicolor. Accent spans now
+   inherit their parent's color so the emphasis disappears visually.
+   The classes stay so existing HTML keeps working. */
+.accent-r,
+.accent-y,
+.accent-b,
+.accent-o,
+.accent-g,
+.accent-p {
+  color: inherit;
+}
+
+/* Closing block -------------------------------------------------------- */
+.closing {
+  margin-top: 64px;
+  padding: 36px 30px;
+  background: var(--panel-warm);
+  border-radius: 20px;
+  border: 1px solid var(--rule);
+}
+.closing h2 { margin-top: 0; }
+.closing .contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+  font-size: 15px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Responsive
+   Existing per-component @media rules above handle grid collapses;
+   this block adds the missing phone-wide treatment (nav stacking,
+   typography scaling, padding tightening).
+   ───────────────────────────────────────────────────────────── */
+
+/* Tablets + large phones */
+@media (max-width: 640px) {
+  .page {
+    padding: 32px 20px 64px;
+  }
+  .site-nav {
+    padding: 14px 0 20px;
+    margin-bottom: 28px;
+  }
+  .nav-links {
+    gap: 18px;
+  }
+  .nav-links a {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 34px;
+  }
+  .page-lede {
+    font-size: 19px;
+  }
+  .lede {
+    font-size: 17px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .stat-num {
+    font-size: 28px;
+  }
+  .card {
+    padding: 22px 20px;
+    border-radius: 16px;
+  }
+  .closing {
+    padding: 28px 22px;
+  }
+  .pipeline-stage {
+    padding-left: 48px;
+  }
+}
+
+/* Small phones (iPhone SE 1st gen 320px, iPhone 12 mini 360px, iPhone 14 375px).
+   The nav with brand + 3 text links (≈250px right cluster) starts cramming
+   the brand at the left. Stack vertically so brand sits on top, links wrap
+   underneath in a centered row. Same pattern as the App Store pattern of
+   a stacked top section on narrow viewports. */
+@media (max-width: 420px) {
+  .page {
+    padding: 24px 16px 56px;
+  }
+  .site-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0 18px;
+    margin-bottom: 24px;
+  }
+  .nav-brand {
+    font-size: 22px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 22px;
+    width: 100%;
+  }
+  .nav-links a {
+    padding: 4px 2px;       /* slightly taller tap target */
+  }
+
+  h1 {
+    font-size: 30px;
+    letter-spacing: -0.015em;
+  }
+  .page-lede {
+    font-size: 17px;
+  }
+  .lede {
+    font-size: 16px;
+  }
+
+  /* CTA row stacks one-per-row so the two pills don't shoulder-bump */
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .btn {
+    text-align: center;
+  }
+
+  /* Stat grid: 2-col is too cramped under 420px — go single-column */
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+  .stat {
+    padding: 18px 20px;
+  }
+  .stat-num {
+    font-size: 26px;
+  }
+
+  .card {
+    padding: 20px 18px;
+  }
+  .closing {
+    padding: 24px 20px;
+  }
+  .closing .contact-row {
+    gap: 10px;
+    font-size: 14px;
+  }
+  .closing .contact-row a {
+    word-break: break-all;  /* the github URL wraps cleanly instead of overflowing */
+  }
+
+  /* Avatar graph — shrink avatars so 12 circles fit comfortably on a single phone width */
+  .avatar-graph img {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Site footer: stack the two halves and center-align */
+  .site-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    margin-top: 72px;
+  }
+  .site-footer .footer-links {
+    justify-content: center;
+    gap: 8px 16px;
+  }
 }
