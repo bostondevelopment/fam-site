@@ -1,6 +1,6 @@
 # fam-site
 
-Public static site for the Fam app: landing page + privacy policy. Hosted on GitHub Pages.
+Public static site for the Fam app: landing page, engineering deep dive, design packet, and privacy policy. Hosted on GitHub Pages.
 
 Plain HTML/CSS, no Jekyll, no build step. Edit the files, commit, push, and GitHub Pages serves the change in under a minute.
 
@@ -9,8 +9,11 @@ Plain HTML/CSS, no Jekyll, no build step. Edit the files, commit, push, and GitH
 | Path | Purpose |
 |---|---|
 | `index.html` | Landing page (`https://<gh-user>.github.io/fam-site/`) |
+| `engineering.html` | Engineering deep dive — stack, architecture, automation pipeline, agent workflow. |
+| `design.html` | Design packet — principles, tokens, components, motion, screen map. Self-contained (Inter fonts + screens bundled in `assets/design/`). |
 | `privacy.html` | Privacy policy (`https://<gh-user>.github.io/fam-site/privacy.html`) — this is the URL to paste into App Store Connect → App Information → Privacy Policy URL |
-| `styles.css` | Shared styles |
+| `styles.css` | Shared styles (top nav, footer, landing/engineering/privacy pages). `design.html` has its own scoped styles for the packet shell. |
+| `assets/design/` | PNG screens + Inter woff2 fonts bundled for `design.html`. |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is (no Jekyll processing) |
 
 ## Publishing — first time

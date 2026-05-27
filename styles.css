@@ -181,6 +181,14 @@ footer p {
   max-width: 960px;
 }
 
+/* Narrower readable column for long-form prose inside a .page.wide frame
+   (used on the privacy page so its top nav matches the wide pages, while
+   the body text keeps a comfortable line length). */
+.prose {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 /* Top nav --------------------------------------------------------------- */
 .site-nav {
   display: flex;
@@ -728,4 +736,33 @@ code {
     justify-content: center;
     gap: 8px 16px;
   }
+}
+
+/* Very small phones (iPhone SE 1st gen at 320px, narrow Androids) ----- */
+@media (max-width: 360px) {
+  .page {
+    padding: 20px 14px 48px;
+  }
+  h1 { font-size: 28px; }
+  .page-lede { font-size: 16px; }
+
+  /* Pipeline circle + connector: tighter so the text column has room */
+  .pipeline-stage { padding: 10px 0 18px 44px; }
+  .pipeline-stage::before {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+    top: 6px;
+  }
+  .pipeline-stage::after { left: 14px; top: 42px; }
+
+  /* Tech tag pills shrink a hair so 2-per-row stays comfortable */
+  .tech-tag {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  /* Closing block: gentler padding so the box doesn't crowd the edges */
+  .closing { padding: 22px 16px; }
+  .closing .contact-row { font-size: 13px; }
 }
