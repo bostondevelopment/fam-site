@@ -31,7 +31,7 @@
         <p class="page-lede">
           A two-platform consumer app — Django on the backend, Expo / React
           Native on mobile — shipped by a one-person team running an
-          AI-augmented engineering workflow. Here's what's inside the repo and
+          AI-augmented engineering workflow. The workflow that produced it is checked into the repo, so it's repeatable and transferable, not a one-off. Here's what's inside the repo and
           why it's structured the way it is.
         </p>
       </header>
@@ -40,8 +40,8 @@
       <section>
         <div class="stat-grid">
           <div class="stat">
-            <span class="stat-num">~2.57M</span>
-            <span class="stat-label">Lines of code across two platforms (backend Python + mobile TS/TSX)</span>
+            <span class="stat-num">15</span>
+            <span class="stat-label">Backend service domains (111 files) — one bounded context each; views stay thin, logic lives in services</span>
           </div>
           <div class="stat">
             <span class="stat-num">132</span>
@@ -290,9 +290,9 @@
         </p>
         <ul>
           <li>
-            <strong>Backend unit + integration:</strong> 1,471+ <code>test_*.py</code>
-            files across the repo (120 in the canonical
-            <code class="path">backend/tests/</code> directory), running on
+            <strong>Backend unit + integration:</strong> 120 canonical tests in
+            <code class="path">backend/tests/</code> (plus colocated suites across
+            the repo), running on
             <code>pytest</code> + <code>pytest-django</code> against
             PostgreSQL (configurable to SQLite for fast local runs).
           </li>
@@ -407,7 +407,7 @@
         <p>
           Sentry is wired on both platforms and required when
           <code>DJANGO_DEBUG=0</code>. The mobile app supports OTA updates via
-          Expo Updates, so most bugfixes don't need an App Store release.
+          Expo Updates, so most bugfixes don't need a fresh build submission.
         </p>
       </section>
 
