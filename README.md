@@ -4,6 +4,8 @@ Public static site for the Fam app: landing page, engineering deep dive, design 
 
 Plain HTML/CSS, no Jekyll, no build step. Edit the files, commit, push, and GitHub Pages serves the change in under a minute.
 
+Visit https://bostondevelopment.github.io/fam-site/
+
 ## Files
 
 | Path | Purpose |
