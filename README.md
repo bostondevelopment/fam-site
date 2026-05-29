@@ -1,64 +1,41 @@
-# fam-site
+# Fam — a private family graph
 
-Public static site for the Fam app: landing page, engineering deep dive, design packet, and privacy policy. Hosted on GitHub Pages.
+A two-platform consumer app for keeping a family's people, photos, and memories in one place. Private to the family; no ads, no tracking, no public posts.
 
-Plain HTML/CSS, no Jekyll, no build step. Edit the files, commit, push, and GitHub Pages serves the change in under a minute.
+→ **[The app + what it does](https://bostondevelopment.github.io/fam-site/)**
+→ **[Engineering deep-dive](https://bostondevelopment.github.io/fam-site/engineering.html)** — backend, agent workflow, signed-media CDN, OpenAPI contract
+→ **[Design packet](https://bostondevelopment.github.io/fam-site/design.html)** — principles, tokens, components, motion
 
-Visit https://bostondevelopment.github.io/fam-site/
+---
 
-## Files
+## About this repo
 
-| Path | Purpose |
-|---|---|
-| `index.html` | Landing page (`https://<gh-user>.github.io/fam-site/`) |
-| `engineering.html` | Engineering deep dive — stack, architecture, automation pipeline, agent workflow. |
-| `design.html` | Design packet — principles, tokens, components, motion, screen map. Self-contained (Inter fonts + screens bundled in `assets/design/`). |
-| `privacy.html` | Privacy policy (`https://<gh-user>.github.io/fam-site/privacy.html`) — this is the URL to paste into App Store Connect → App Information → Privacy Policy URL |
-| `styles.css` | Shared styles (top nav, footer, landing/engineering/privacy pages). `design.html` has its own scoped styles for the packet shell. |
-| `assets/design/` | PNG screens + Inter woff2 fonts bundled for `design.html`. |
-| `.nojekyll` | Tells GitHub Pages to serve files as-is (no Jekyll processing) |
+This repository hosts the public-facing site for Fam — landing page, engineering write-up, design packet, privacy policy. The Fam app itself (Django 5.2 / DRF backend + Expo / React Native mobile) lives in a separate, private repository.
 
-## Publishing — first time
+## About the app
 
-1. Create a new repository on GitHub named `fam-site` (public).
-2. From this directory:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial site"
-   git branch -M main
-   git remote add origin https://github.com/<your-gh-user>/fam-site.git
-   git push -u origin main
-   ```
-3. On GitHub, go to **Settings → Pages**:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` / `/ (root)`
-   - Save.
-4. Wait ~30 seconds. The published URL appears at the top of the Pages settings panel, e.g.
-   `https://<your-gh-user>.github.io/fam-site/`
-5. Paste `https://<your-gh-user>.github.io/fam-site/privacy.html` into App Store Connect.
+Fam is a private family-graph product. The people you love, the photos you've taken of them, the birthdays and anniversaries and holidays that mark a year together — all in one place, visible only to your family. A Pulse feed surfaces what's coming up next; AI-suggested face tagging fills in old photo albums; an elder-to-caregiver transfer flow lets accounts be handed off without losing history.
 
-## Publishing — updates
+**Status:** TestFlight beta (not the App Store, by choice).
 
-```bash
-git add .
-git commit -m "Update privacy policy"
-git push
-```
+## How it was built — honest framing
 
-Pages picks up the change automatically.
+Fam was built solo by **directing AI coding agents (Claude Code, Cursor)** through a codified 9-role agent workflow checked into the repo — not by hand-writing the code. The repeatable, transferable artifact is the workflow itself: prompts for product → architect → designer → brief → developer → QA → design-audit → release, slash-command bindings in the IDE, and an `AGENTS.md` router with a cost guardrail that forces the agent to stop before any paid-service usage.
 
-## Adding a custom domain later
+The output is a real two-platform product with the engineering discipline of a small team:
 
-When you're ready to host this at `https://fam.app/`:
+- **132 documented API endpoints** (OpenAPI contract drives the auto-generated mobile client; a CI step fails the build when the contract and client drift).
+- **54 Django models** across **15 service domains** (`activity`, `events`, `faces`, `notes`, `notifications`, `occurrences`, `people`, `photos`, `pulse`, `reminders`, `transfer_requests`, …).
+- **271 archived pull requests** with an enforced naming convention — every commit title matches its PR archive filename, turning the git log into a readable product changelog.
+- **42 Maestro E2E flows** on a real iOS simulator gating CI, plus **40 bash smoke suites** running against the live server end-to-end.
+- An **AWS Rekognition face-tagging pipeline**, **CloudFront signed-media URLs** (dual mode: per-URL query signing + cookie-based wildcard, with S3 presigned fallback), **IDOR security hardening** with a dedicated test suite, and an **occurrence-materialization feed** reconciled by Celery.
+- Full GitHub Actions CI/CD, EAS build profiles, and a local iOS code-signing pipeline → TestFlight.
 
-1. Add a `CNAME` file in this repo containing one line: `fam.app`
-2. In your DNS provider, create a CNAME record for `fam.app` (or `www.fam.app`) pointing to `<your-gh-user>.github.io`.
-3. In GitHub repo Settings → Pages, set the custom domain to `fam.app` and enable "Enforce HTTPS".
-4. Update the privacy policy URL in App Store Connect to `https://fam.app/privacy.html`.
+The **[engineering page](https://bostondevelopment.github.io/fam-site/engineering.html)** walks through all of it.
 
-## Editing the privacy policy
+---
 
-Open `privacy.html` and edit the sections. Bump the "Last updated" date at the top of the page. Material changes should also bump the "Effective date" — and you should notify users inside the app or by email.
+## Author
 
-Keep the language plain. The current version intentionally avoids legalese.
+Built by **Michael Finneran** — Boston, MA
+[linkedin.com/in/michaelfinneran](https://linkedin.com/in/michaelfinneran) · [MRFinneran@gmail.com](mailto:MRFinneran@gmail.com)
