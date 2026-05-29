@@ -18,7 +18,7 @@ Fam is a private family-graph product. The people you love, the photos you've ta
 
 **Status:** TestFlight beta (not the App Store, by choice).
 
-## How it was built — honest framing
+## How it was built
 
 Fam was built solo by **directing AI coding agents (Claude Code, Cursor)** through a codified 9-role agent workflow checked into the repo — not by hand-writing the code. The repeatable, transferable artifact is the workflow itself: prompts for product → architect → designer → brief → developer → QA → design-audit → release, slash-command bindings in the IDE, and an `AGENTS.md` router with a cost guardrail that forces the agent to stop before any paid-service usage.
 
