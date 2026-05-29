@@ -3,7 +3,9 @@
 A two-platform consumer app for keeping a family's people, photos, and memories in one place. Private to the family; no ads, no tracking, no public posts.
 
 → **[The app + what it does](https://bostondevelopment.github.io/fam-site/)**
+
 → **[Engineering deep-dive](https://bostondevelopment.github.io/fam-site/engineering.html)** — backend, agent workflow, signed-media CDN, OpenAPI contract
+
 → **[Design packet](https://bostondevelopment.github.io/fam-site/design.html)** — principles, tokens, components, motion
 
 ---
