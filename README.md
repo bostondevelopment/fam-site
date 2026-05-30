@@ -40,4 +40,4 @@ The **[engineering page](https://bostondevelopment.github.io/fam-site/engineerin
 ## Author
 
 Built by **Michael Finneran** — Boston, MA
-[linkedin.com/in/michaelfinneran](https://linkedin.com/in/michaelfinneran) · [MRFinneran@gmail.com](mailto:MRFinneran@gmail.com)
+[linkedin.com/in/michaelfinneran](https://linkedin.com/in/michaelfinneran) · [bostondevelopmentco@gmail.com](mailto:bostondevelopmentco@gmail.com)
