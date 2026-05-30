@@ -12,6 +12,27 @@
     <link rel="apple-touch-icon" href="assets/favicon.png" />
     <meta name="theme-color" content="#E37A6D" />
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Beta-signup modal styles -->
+    <style id="bm-style">
+      .bm-overlay{position:fixed;inset:0;background:rgba(40,24,22,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px;}
+      .bm-overlay.open{display:flex;}
+      .bm-card{background:#fff;border-radius:18px;max-width:440px;width:100%;padding:32px 30px 28px;box-shadow:0 24px 70px rgba(0,0,0,.28);position:relative;font-family:inherit;max-height:90vh;overflow:auto;animation:bm-pop .18s ease;}
+      @keyframes bm-pop{from{transform:translateY(8px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+      .bm-close{position:absolute;top:14px;right:16px;border:none;background:none;font-size:26px;line-height:1;cursor:pointer;color:#c2a9a3;padding:4px;}
+      .bm-close:hover{color:#3a2522;}
+      .bm-card h3{margin:0 0 6px;font-size:22px;font-weight:700;color:#3a2522;}
+      .bm-sub{margin:0 0 20px;color:#806f6b;font-size:14.5px;line-height:1.5;}
+      .bm-field{margin-bottom:14px;}
+      .bm-field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:#3a2522;}
+      .bm-field label .opt{font-weight:500;color:#b3a8a4;}
+      .bm-field input,.bm-field textarea{width:100%;box-sizing:border-box;padding:11px 13px;border:1.5px solid #ece2df;border-radius:11px;font-size:15px;font-family:inherit;background:#fdfbfa;color:#3a2522;}
+      .bm-field input:focus,.bm-field textarea:focus{outline:none;border-color:#E37A6D;background:#fff;}
+      .bm-field textarea{min-height:88px;resize:vertical;}
+      .bm-submit{width:100%;margin-top:6px;padding:14px;border:none;border-radius:999px;background:#E37A6D;color:#fff;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .15s ease,box-shadow .15s ease;}
+      .bm-submit:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(227,122,109,.35);}
+      .bm-note{margin:12px 0 0;font-size:12.5px;color:#b3a8a4;text-align:center;}
+    </style>
   </head>
   <body>
     <main class="page wide">
@@ -36,7 +57,7 @@
         </p>
         <div class="cta-row">
           <!-- TODO: replace href="#" with App Store URL -->
-          <a class="btn" href="#" aria-label="Join the TestFlight beta">Join the TestFlight beta →</a>
+          <a class="btn" href="#" data-beta aria-label="Join the TestFlight beta">Join the TestFlight beta →</a>
           <a class="btn btn-secondary" href="engineering.html">How it's built →</a>
         </div>
       </header>
@@ -177,7 +198,7 @@
           </p>
           <div class="cta-row">
             <!-- TODO: replace href="#" with App Store URL -->
-            <a class="btn" href="#">Join the TestFlight beta →</a>
+            <a class="btn" href="#" data-beta>Join the TestFlight beta →</a>
             <a class="btn btn-secondary" href="engineering.html">See how it's built →</a>
           </div>
         </div>
@@ -193,5 +214,92 @@
         </div>
       </footer>
     </main>
+
+    <!-- Beta-signup modal -->
+    <div class="bm-overlay" id="bm-overlay" role="dialog" aria-modal="true" aria-labelledby="bm-title">
+      <div class="bm-card">
+        <button class="bm-close" id="bm-close" type="button" aria-label="Close">&times;</button>
+        <h3 id="bm-title">Join the Fam beta</h3>
+        <p class="bm-sub">Tell me a little about you. This opens your email app with a message ready to send — just review and hit send.</p>
+        <form id="bm-form" novalidate>
+          <div class="bm-field">
+            <label for="bm-name">Name</label>
+            <input id="bm-name" name="name" type="text" required autocomplete="name" />
+          </div>
+          <div class="bm-field">
+            <label for="bm-company">Company <span class="opt">(optional)</span></label>
+            <input id="bm-company" name="company" type="text" autocomplete="organization" />
+          </div>
+          <div class="bm-field">
+            <label for="bm-email">Your email</label>
+            <input id="bm-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="bm-field">
+            <label for="bm-why">Why you'd like to join the beta</label>
+            <textarea id="bm-why" name="why" required placeholder="A line or two about why you want in."></textarea>
+          </div>
+          <button type="submit" class="bm-submit">Open email &rarr;</button>
+          <p class="bm-note">No data leaves your device — this just drafts an email to us.</p>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        var APP = "Fam";
+        var RECIPIENT = "bostondevelopmentco@gmail.com";
+        var overlay = document.getElementById('bm-overlay');
+        var form = document.getElementById('bm-form');
+
+        function openModal(e) {
+          if (e) e.preventDefault();
+          overlay.classList.add('open');
+          document.body.style.overflow = 'hidden';
+          setTimeout(function () { document.getElementById('bm-name').focus(); }, 60);
+        }
+        function closeModal() {
+          overlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+
+        Array.prototype.forEach.call(document.querySelectorAll('[data-beta]'), function (btn) {
+          btn.addEventListener('click', openModal);
+        });
+        document.getElementById('bm-close').addEventListener('click', closeModal);
+        overlay.addEventListener('click', function (e) { if (e.target === overlay) closeModal(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) { form.reportValidity(); return; }
+          var name = document.getElementById('bm-name').value.trim();
+          var company = document.getElementById('bm-company').value.trim();
+          var email = document.getElementById('bm-email').value.trim();
+          var why = document.getElementById('bm-why').value.trim();
+
+          var lines = [];
+          lines.push("Hi,");
+          lines.push("");
+          lines.push("I'd like to request to join the " + APP + " beta. Let me explain a bit about myself and why I'd be a good fit:");
+          lines.push("");
+          lines.push("Name: " + name);
+          if (company) lines.push("Company: " + company);
+          lines.push("Email: " + email);
+          lines.push("");
+          lines.push("Why I want to join:");
+          lines.push(why);
+          lines.push("");
+          lines.push("Thanks!");
+          lines.push(name);
+
+          var subject = "Request to join the " + APP + " beta";
+          var href = "mailto:" + RECIPIENT +
+            "?subject=" + encodeURIComponent(subject) +
+            "&body=" + encodeURIComponent(lines.join("\r\n"));
+          window.location.href = href;
+          closeModal();
+        });
+      })();
+    </script>
   </body>
 </html>
